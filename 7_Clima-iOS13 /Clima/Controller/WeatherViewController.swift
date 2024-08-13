@@ -31,7 +31,7 @@ class WeatherViewController: UIViewController {
         //親クラス（UIViewController）の viewDidLoad メソッドを呼び出しています。これにより、親クラスが行うべき標準的な初期化処理が行われます。
         
         locationManager.delegate = self // CLLocationManagerが位置情報のイベントをWeatherViewControllerに通知するよう設定する
-        weatherManager.delegate = self // WeatherDataManagerが天気データの更新イベントをWeatherViewControllerに通知するよう設定する
+     //   weatherManager.delegate = self // WeatherDataManagerが天気データの更新イベントをWeatherViewControllerに通知するよう設定する
         searchField.delegate = self // UITextFieldの編集イベントをWeatherViewControllerに通知するよう設定する
     }
 
@@ -96,6 +96,9 @@ extension WeatherViewController: UITextFieldDelegate {
 }
 
 //MARK:- View update extension
+// WeatherManagerDelegateは何もimportしなくても使える
+//WeatherManagerDelegateを準拠し拡張したWeatherViewControllerクラス
+//weatherManager.delegate = self によって、WeatherManager のデリゲートとして WeatherViewController を設定してる
 extension WeatherViewController: WeatherManagerDelegate {
     
     func updateWeather(weatherModel: WeatherModel){
@@ -112,22 +115,35 @@ extension WeatherViewController: WeatherManagerDelegate {
 }
 
 // MARK:- CLLocation
+//import CoreLocationがあるからCLLocationManagerDelegateが使えている。
+//CLLocationManagerDelegateを準拠し拡張したWeatherViewController
 extension WeatherViewController: CLLocationManagerDelegate {
-    
+    // このメソッドは、ユーザーが「位置情報取得」ボタンをクリックしたときに呼び出されます。
+    // ボタンがクリックされると、位置情報の取得に関連する処理が実行されます。
     @IBAction func locationButtonClicked(_ sender: UIButton) {
         // Get permission
+        // ユーザーに位置情報の使用許可を求める
+        // アプリがフォアグラウンドに表示されているときに位置情報を利用するための権限をリクエストします。
         locationManager.requestWhenInUseAuthorization()
+        // 現在の位置情報を取得するリクエストを送信します
+        // このメソッドを呼び出すことで、アプリが位置情報の取得を開始します。
+        // 成功すると、位置情報が `CLLocationManagerDelegate` のメソッドを通じて渡されます。
         locationManager.requestLocation()
     }
-    
-    
+    //CLLocationManagerDelegate プロトコルに定義されているlocationManagerメソッドをオーバーライドして実装
+    //CLLocationManagerとlocationsが引数
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //locations.lastがnilでなければ実行される
         if let location = locations.last {
+        //location オブジェクトの coordinate プロパティから、緯度（latitude）を取り出し、lat という定数に代入します。
             let lat = location.coordinate.latitude
+        //location オブジェクトの coordinate プロパティから、経度（longitude）を取り出しlon という定数に代入します。
             let lon = location.coordinate.longitude
+        //緯度（lat）と経度（lon）を引数として渡し指定した位置情報を使って天気データを取得する
             weatherManager.fetchWeather(lat, lon)
         }
     }
+    //CLLocationManagerDelegate プロトコルに定義されているlocationManagerメソッドをオーバーライドして実装
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
