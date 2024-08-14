@@ -18,7 +18,8 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel! // 表示画面に温度を表示するため
     @IBOutlet weak var cityLabel: UILabel!        // 表示画面に都市名を表示するため
     @IBOutlet weak var searchField: UITextField!   // ユーザーが都市名を入力するためのテキストフィールド
-    
+    @IBOutlet weak var background: UIImageView! //　これでViewのbackgroundという画像の部分と繋がる
+
     
     //MARK: Properties
     //型推論を使用して変数にインスタンスを代入
@@ -103,10 +104,16 @@ extension WeatherViewController: WeatherManagerDelegate {
     
     func updateWeather(weatherModel: WeatherModel){
         DispatchQueue.main.sync {
+           
             temperatureLabel.text = weatherModel.temperatureString
             cityLabel.text = weatherModel.cityName
             self.conditionImageView.image = UIImage(systemName: weatherModel.conditionName)
-            
+            if let image = UIImage(named: "Dark") {
+                background.image = image
+            } else {
+                print("Image 'Dark' not found in assets.")
+            }
+
             
         }
     }
