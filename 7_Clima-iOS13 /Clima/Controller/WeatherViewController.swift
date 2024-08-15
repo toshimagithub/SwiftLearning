@@ -109,7 +109,9 @@ extension WeatherViewController: WeatherManagerDelegate {
             temperatureLabel.text = weatherModel.temperatureString
             cityLabel.text = weatherModel.cityName
             self.conditionImageView.image = UIImage(systemName: weatherModel.conditionName)
-            
+            if self.searchField.text == "Tokyo" {
+                            background.image  = UIImage(named: "dark_background")
+                                }
         }
     }
     
