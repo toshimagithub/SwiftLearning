@@ -103,20 +103,16 @@ extension WeatherViewController: WeatherManagerDelegate {
     
     func updateWeather(weatherModel: WeatherModel){
         DispatchQueue.main.sync {
-           
             temperatureLabel.text = weatherModel.temperatureString
             cityLabel.text = weatherModel.cityName
             self.conditionImageView.image = UIImage(systemName: weatherModel.conditionName)
             if searchField.text == "Tokyo" {
-                            background.image  = UIImage(named: "dark_background")
-            }else {
-                background.image  = UIImage(named: "light_background")
+                background.image = UIImage(named: "dark_background")
+            } else {
+                background.image = UIImage(named: "light_background")
             }
-            
-            
         }
     }
-    
     func failedWithError(error: Error){
         print(error)
     }
