@@ -29,6 +29,7 @@ class WeatherViewController: UIViewController {
     //UIViewController クラスの viewDidLoad メソッドをオーバーライドしている
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //親クラス（UIViewController）の viewDidLoad メソッドを呼び出しています。これにより、親クラスが行うべき標準的な初期化処理が行われます。
         
         locationManager.delegate = self // CLLocationManagerが位置情報のイベントをWeatherViewControllerに通知するよう設定する
@@ -108,12 +109,6 @@ extension WeatherViewController: WeatherManagerDelegate {
             temperatureLabel.text = weatherModel.temperatureString
             cityLabel.text = weatherModel.cityName
             self.conditionImageView.image = UIImage(systemName: weatherModel.conditionName)
-            if let image = UIImage(named: "Dark") {
-                background.image = image
-            } else {
-                print("Image 'Dark' not found in assets.")
-            }
-
             
         }
     }
