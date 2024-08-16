@@ -19,8 +19,6 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!        // 表示画面に都市名を表示するため
     @IBOutlet weak var searchField: UITextField!   // ユーザーが都市名を入力するためのテキストフィールド
     @IBOutlet weak var background: UIImageView! //　これでViewのbackgroundという画像の部分と繋がる
-
-    
     //MARK: Properties
     //型推論を使用して変数にインスタンスを代入
     var weatherManager = WeatherDataManager() //インスタンスを作成し、天気データの取得や管理を行います
@@ -34,8 +32,6 @@ class WeatherViewController: UIViewController {
         weatherManager.delegate = self // WeatherDataManagerが天気データの更新イベントをWeatherViewControllerに通知するよう設定する
         searchField.delegate = self // UITextFieldの編集イベントをWeatherViewControllerに通知するよう設定する
     }
-
-
 }
  
 //MARK:- TextField extension
@@ -43,14 +39,12 @@ class WeatherViewController: UIViewController {
 extension WeatherViewController: UITextFieldDelegate {
         //メソッドや関数の前には、funcが必要
         //@IBAction は、UI要素のアクションとメソッドを接続するために使用されます。
-
     // 引数 'sender' は、アクションをトリガーした UIButton のインスタンスを指します
         @IBAction func searchBtnClicked(_ sender: UIButton) {
             searchField.endEditing(true)    //dismiss keyboard     // キーボードを閉じるために、searchField（テキストフィールド）の編集を終了する
             print(searchField.text!)     // テキストフィールドの内容をコンソールに出力する
             searchWeather()
         }
-    
         func searchWeather(){
             //searchField.textがnilでない場合、trueになる
             if let cityName = searchField.text{
@@ -59,17 +53,14 @@ extension WeatherViewController: UITextFieldDelegate {
                 weatherManager.fetchWeather(cityName)
             }
         }
-        
         // when keyboard return clicked
     //textFieldShouldReturn メソッドは、
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             searchField.endEditing(true)    //dismiss keyboard
             print(searchField.text!)
-            
             searchWeather()
             return true
         }
-        
         // when textfield deselected
         //textFieldShouldEndEditingはUITextFieldDelegate プロトコルに定義されてる
         //このメソッドはテキストフィールドがリターンキー（Enterキー）を押されたときに呼び出される
@@ -85,16 +76,13 @@ extension WeatherViewController: UITextFieldDelegate {
                 return false            // check if city name is valid
             }
         }
-        
         // when textfield stop editing (keyboard dismissed)
         //textFieldDidEndEditing(_:) メソッドは UITextFieldDelegate プロトコルに定義されてる
         //このメソッドは、テキストフィールドが編集を終了したとき（ユーザーがキーボードを閉じる、または他の場所をタップするなど）に呼び出されます。　実行内容がコメントアウトしてるから何も実行してない
         func textFieldDidEndEditing(_ textField: UITextField) {
     //        searchField.text = ""   // clear textField
-            
         }
 }
-
 //MARK:- View update extension
 // WeatherManagerDelegateは何もimportしなくても使える
 //WeatherManagerDelegateを準拠し拡張したWeatherViewControllerクラス
@@ -106,10 +94,13 @@ extension WeatherViewController: WeatherManagerDelegate {
             temperatureLabel.text = weatherModel.temperatureString
             cityLabel.text = weatherModel.cityName
             self.conditionImageView.image = UIImage(systemName: weatherModel.conditionName)
-            if searchField.text == "Tokyo" {
-                background.image = UIImage(named: "dark_background")
-            } else {
-                background.image = UIImage(named: "light_background")
+            
+            if let temperature = Double(weatherModel.temperatureString) {
+                if temperature >= 30 {
+                    background.image = UIImage(named: "dark_background")
+                } else {
+                    background.image = UIImage(named: "light_background")
+                }
             }
         }
     }
