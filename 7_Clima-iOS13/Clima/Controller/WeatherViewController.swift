@@ -94,7 +94,6 @@ extension WeatherViewController: WeatherManagerDelegate {
             temperatureLabel.text = weatherModel.temperatureString
             cityLabel.text = weatherModel.cityName
             self.conditionImageView.image = UIImage(systemName: weatherModel.conditionName)
-            
             if let temperature = Double(weatherModel.temperatureString) {
                 if temperature >= 30 {
                     background.image = UIImage(named: "dark_background")
