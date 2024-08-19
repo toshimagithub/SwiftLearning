@@ -9,7 +9,6 @@
 import UIKit //UIViewControllerを使うためにimportしてる
 import CoreLocation //位置情報を取得するフレームワーク
 
-
 //UIViewControllerを継承したWeatherViewControllerというクラス
 //基本的にUIViewControllerは継承して使う、iOS のフレームワークの一部であり、UIKit フレームワークに含まれる
 class WeatherViewController: UIViewController {
@@ -94,12 +93,13 @@ extension WeatherViewController: WeatherManagerDelegate {
             temperatureLabel.text = weatherModel.temperatureString
             cityLabel.text = weatherModel.cityName
             self.conditionImageView.image = UIImage(systemName: weatherModel.conditionName)
-            if let temperature = Double(weatherModel.temperatureString) {
-                if temperature >= 30 {
-                    background.image = UIImage(named: "dark_background")
-                } else {
-                    background.image = UIImage(named: "light_background")
-                }
+            if searchField.text == "Tokyo" {
+                background.image  = UIImage(named: "dark_background")
+            }else {
+                background.image  = UIImage(named: "light_background")
+            }
+            if let cityName = searchField.text {
+                print("action: search, city: \(cityName)")
             }
         }
     }
