@@ -98,10 +98,8 @@ extension WeatherViewController: WeatherManagerDelegate {
             } else {
                 background.image  = UIImage(named: "light_background")
             }
-            if let temperature = Double(weatherModel.temperatureString) {
-                if temperature >= 30 {
-                    background.image = UIImage(named: "dark_background")
-                }
+            if let temperature = Double(weatherModel.temperatureString), temperature >= 30 {
+                background.image = UIImage(named: "dark_background")
             }
         }
         if let cityName = searchField.text {
