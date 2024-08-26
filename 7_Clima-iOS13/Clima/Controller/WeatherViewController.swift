@@ -18,7 +18,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!        // 表示画面に都市名を表示するため
     @IBOutlet weak var searchField: UITextField!   // ユーザーが都市名を入力するためのテキストフィールド
     @IBOutlet weak var background: UIImageView! //　これでViewのbackgroundという画像の部分と繋がる
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIImageView!
     //MARK: Properties
     //型推論を使用して変数にインスタンスを代入
     var weatherManager = WeatherDataManager() //インスタンスを作成し、天気データの取得や管理を行います

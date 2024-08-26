@@ -58,11 +58,11 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cYp-Ae-JCw">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="suit.heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gIm-kf-UTZ">
                                         <rect key="frame" x="274" y="51.5" width="100" height="97.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="5dt-mi-Jkc"/>
-                                            <constraint firstAttribute="width" constant="100" id="7v4-tS-kL7"/>
+                                            <constraint firstAttribute="width" constant="100" id="V8b-Te-Dhx"/>
+                                            <constraint firstAttribute="height" constant="100" id="oA3-yn-rgA"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.rain" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mYn-vV-MBC">
@@ -124,7 +124,8 @@
                     <connections>
                         <outlet property="background" destination="kWX-h1-VLT" id="3EX-XA-Cdv"/>
                         <outlet property="cityLabel" destination="CWP-r8-Jsy" id="8cQ-3l-ufV"/>
-                        <outlet property="conditionImageView" destination="cYp-Ae-JCw" id="GtS-yI-h3D"/>
+                        <outlet property="conditionImageView" destination="mYn-vV-MBC" id="gpD-FU-YB0"/>
+                        <outlet property="favoriteButton" destination="gIm-kf-UTZ" id="R6B-a5-Mj2"/>
                         <outlet property="searchField" destination="2eh-wL-W34" id="Mdn-d0-ZRy"/>
                         <outlet property="temperatureLabel" destination="w9o-tW-03D" id="mF4-vV-JxK"/>
                     </connections>
@@ -137,9 +138,9 @@
     <resources>
         <image name="background" width="662" height="662"/>
         <image name="cloud.rain" catalog="system" width="126" height="128"/>
-        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="location.circle.fill" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="suit.heart.fill" catalog="system" width="128" height="107"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
