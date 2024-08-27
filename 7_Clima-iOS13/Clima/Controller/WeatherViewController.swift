@@ -18,8 +18,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!        // 表示画面に都市名を表示するため
     @IBOutlet weak var searchField: UITextField!   // ユーザーが都市名を入力するためのテキストフィールド
     @IBOutlet weak var background: UIImageView! //　これでViewのbackgroundという画像の部分と繋がる
-    @IBOutlet weak var favoriteButton: UIImageView!
-    //MARK: Properties
+    @IBOutlet weak var favoriteButton: UIButton!    //MARK: Properties
     //型推論を使用して変数にインスタンスを代入
     var weatherManager = WeatherDataManager() //インスタンスを作成し、天気データの取得や管理を行います
     let locationManager = CLLocationManager() //インスタンスを作成し、ユーザーの現在位置を取得・管理 import CoreLocationしているからCLLocationManager()が使える
@@ -31,6 +30,10 @@ class WeatherViewController: UIViewController {
         locationManager.delegate = self // CLLocationManagerが位置情報のイベントをWeatherViewControllerに通知するよう設定する
         weatherManager.delegate = self // WeatherDataManagerが天気データの更新イベントをWeatherViewControllerに通知するよう設定する
         searchField.delegate = self // UITextFieldの編集イベントをWeatherViewControllerに通知するよう設定する
+        let heartImage = UIImage(systemName: "suit.heart.fill")
+        favoriteButton.setImage(heartImage, for: .normal)
+        favoriteButton.setTitle("", for: .normal)
+        
     }
 }
  
