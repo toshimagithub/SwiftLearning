@@ -34,20 +34,22 @@ class WeatherViewController: UIViewController {
         favoriteButton.setImage(heartImage, for: .normal)
         favoriteButton.setTitle("", for: .normal)
         favoriteButton.frame.size = CGSize(width: 80, height: 80)
-//        Storyboardでのボタンの制約width=100,height=100にしてるけど変わらない
-        // favoriteButtonにアクションを追加
-        favoriteButton.addTarget(self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
-            }
+        // ボタンにアクションを追加
+               favoriteButton.addTarget(self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
+           }
 
-        @objc func favoriteButtonPressed() {
-            // ThirdViewControllerのインスタンスを作成
-            let thirdViewController = ThirdViewController(nibName: "ThirdView", bundle: nil)
-            // 画面遷移を行う
-            thirdViewController.modalPresentationStyle = .fullScreen
-            present(thirdViewController, animated: true, completion: nil)
-            }
-}
- 
+           @objc func favoriteButtonPressed() {
+               // ThirdViewControllerのインスタンスを作成
+               let thirdViewController = ThirdViewController(nibName: "ThirdView", bundle: nil)
+               
+               // UINavigationControllerにThirdViewControllerをラップ
+               let navigationController = UINavigationController(rootViewController: thirdViewController)
+               
+               // 画面遷移を行う
+               navigationController.modalPresentationStyle = .fullScreen
+               present(navigationController, animated: true, completion: nil)
+           }
+       }
 //MARK:- TextField extension
 //WeatherViewControllerがUITextFieldDelegate準拠し、WeatherViewControllerを拡張する
 extension WeatherViewController: UITextFieldDelegate {
