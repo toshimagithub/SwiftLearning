@@ -33,8 +33,19 @@ class WeatherViewController: UIViewController {
         let heartImage = UIImage(systemName: "suit.heart.fill")
         favoriteButton.setImage(heartImage, for: .normal)
         favoriteButton.setTitle("", for: .normal)
-        
-    }
+        favoriteButton.frame.size = CGSize(width: 80, height: 80)
+//        Storyboardでのボタンの制約width=100,height=100にしてるけど変わらない
+        // favoriteButtonにアクションを追加
+        favoriteButton.addTarget(self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
+            }
+
+        @objc func favoriteButtonPressed() {
+            // ThirdViewControllerのインスタンスを作成
+            let thirdViewController = ThirdViewController(nibName: "ThirdView", bundle: nil)
+            // 画面遷移を行う
+            thirdViewController.modalPresentationStyle = .fullScreen
+            present(thirdViewController, animated: true, completion: nil)
+            }
 }
  
 //MARK:- TextField extension
