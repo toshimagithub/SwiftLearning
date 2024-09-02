@@ -29,7 +29,7 @@ class WeatherViewController: UIViewController {
         
         locationManager.delegate = self // CLLocationManagerが位置情報のイベントをWeatherViewControllerに通知するよう設定する
         weatherManager.delegate = self // WeatherDataManagerが天気データの更新イベントをWeatherViewControllerに通知するよう設定する
-        searchField.delegate = self // UITextFieldの編集イベントをWeatherViewControllerに通知するよう設定する
+        searchField.delegate = self //UITextFieldの編集イベントをWeatherViewControllerに通知するよう設定する
         let heartImage = UIImage(systemName: "suit.heart.fill")
         favoriteButton.setImage(heartImage, for: .normal)
         favoriteButton.setTitle("", for: .normal)
