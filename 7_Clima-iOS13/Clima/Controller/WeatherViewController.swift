@@ -30,26 +30,28 @@ class WeatherViewController: UIViewController {
         locationManager.delegate = self // CLLocationManagerが位置情報のイベントをWeatherViewControllerに通知するよう設定する
         weatherManager.delegate = self // WeatherDataManagerが天気データの更新イベントをWeatherViewControllerに通知するよう設定する
         searchField.delegate = self //UITextFieldの編集イベントをWeatherViewControllerに通知するよう設定する
+        //"suit.heart.fill"をheartImageに格納
         let heartImage = UIImage(systemName: "suit.heart.fill")
+        //通常の状態の時にfavoriteButtonをheartImageに設定
         favoriteButton.setImage(heartImage, for: .normal)
+        //ボタンのタイトル（テキスト）を空文字列に設定
         favoriteButton.setTitle("", for: .normal)
-        favoriteButton.frame.size = CGSize(width: 80, height: 80)
-        // ボタンにアクションを追加
-               favoriteButton.addTarget(self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
+        //ボタンのサイズを幅、高さを設定
+        favoriteButton.frame.size = CGSize(width: 50, height: 50)
+        // favoriteButtonボタンがタップされたらfavoriteButtonPressed()メソッドが実行される設定
+        favoriteButton.addTarget(self, action: #selector(favoriteButtonPressed), for: .touchUpInside)
            }
-
-           @objc func favoriteButtonPressed() {
-               // ThirdViewControllerのインスタンスを作成
-               let thirdViewController = ThirdViewController(nibName: "ThirdView", bundle: nil)
-               
-               // UINavigationControllerにThirdViewControllerをラップ
-               let navigationController = UINavigationController(rootViewController: thirdViewController)
-               
-               // 画面遷移を行う
-               navigationController.modalPresentationStyle = .fullScreen
-               present(navigationController, animated: true, completion: nil)
+        //タップされたときに実行するメソッドに//@objcをつける
+        @objc func favoriteButtonPressed() {
+        // ThirdViewControllerのインスタンスを作成　
+        let thirdViewController = ThirdViewController(nibName: "ThirdView", bundle: nil)
+        // UINavigationControllerにThirdViewControllerをラップ
+        let navigationController = UINavigationController(rootViewController: thirdViewController)
+        // 画面遷移を行う
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true, completion: nil)
            }
-       }
+        }
 //MARK:- TextField extension
 //WeatherViewControllerがUITextFieldDelegate準拠し、WeatherViewControllerを拡張する
 extension WeatherViewController: UITextFieldDelegate {

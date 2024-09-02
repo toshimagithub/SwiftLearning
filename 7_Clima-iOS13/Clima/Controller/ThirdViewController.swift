@@ -12,34 +12,23 @@ class ThirdViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // ナビゲーションバーのタイトルを設定
         self.title = "navTest"
         // ナビゲーションバーの背景色を薄グレーに設定
         // ナビゲーションバーの外観をカスタマイズ
-                let appearance = UINavigationBarAppearance()
-                appearance.configureWithOpaqueBackground() // 不透明な背景を設定
-//                appearance.backgroundColor = UIColor.lightGray // 背景色を薄グレーに設定？
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground() // 不透明な背景を設定
+        //appearance.backgroundColor = UIColor.lightGray // 背景色を薄グレーに設定？
         appearance.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-
-        
         // カスタム外観を適用
-                navigationController?.navigationBar.standardAppearance = appearance
-                navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        
-        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
         // 左側に「戻る」ボタンを追加
         let backButton = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(backButtonPressed))
         self.navigationItem.leftBarButtonItem = backButton
-        
-        // デバッグ用のprint文
-        print("ThirdViewControllerのviewDidLoadが実行されました。")
     }
-    
     @objc func backButtonPressed() {
         // 現在の画面を閉じる
         self.dismiss(animated: true, completion: nil)
-        // デバッグ用のprint文
-        print("「戻る」ボタンが押されました。")
     }
 }
