@@ -20,6 +20,7 @@ class ThirdViewController: UIViewController {
         appearance.configureWithOpaqueBackground() // 不透明な背景を設定
         //appearance.backgroundColor = UIColor.lightGray // 背景色を薄グレーに設定？
         appearance.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
+        print("クリック")
         // カスタム外観を適用
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
