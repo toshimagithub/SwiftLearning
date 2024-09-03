@@ -39,11 +39,19 @@ class WeatherViewController: UIViewController {
         //ボタンのサイズを幅、高さを設定
         favoriteButton.frame.size = CGSize(width: 50, height: 50)
            }
+        //タンがタップされたら実行
     @IBAction func favoriteButtonPressed(_ sender: UIButton) {
-            let thirdViewController = ThirdViewController(nibName: "ThirdView", bundle: nil)
-            let navigationController = UINavigationController(rootViewController: thirdViewController)
-            navigationController.modalPresentationStyle = .fullScreen
-            present(navigationController, animated: true, completion: nil)
+        //ThirdViewControllerクラスのインスタンスを作成
+        //bundle: nil にすることで、アプリのメインバンドルから ThirdView.xib ファイルを探して読み込むように設定
+        let thirdViewController = ThirdViewController(nibName: "ThirdView", bundle: nil)
+        //thirdViewControllerにナビゲーションバーをつけて前の画面に戻る機能追加
+        let navigationController = UINavigationController(rootViewController: thirdViewController)
+        //モーダル表示（別の画面を現在の画面の上に重ねて表示する）のスタイルを設定
+        //.fullScreen: 画面遷移がフルスクリーンで行われることを指定
+        navigationController.modalPresentationStyle = .fullScreen
+        //present(_:animated:completion:) メソッド ビューコントローラをモーダルに表示するために使用
+        //completion: nil → 実行した後何もしない　animated: true →スムーズに動く
+        present(navigationController, animated: true, completion: nil)
         }
     }
 //MARK:- TextField extension
