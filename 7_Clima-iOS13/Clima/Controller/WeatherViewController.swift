@@ -18,7 +18,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!        // 表示画面に都市名を表示するため
     @IBOutlet weak var searchField: UITextField!   // ユーザーが都市名を入力するためのテキストフィールド
     @IBOutlet weak var background: UIImageView! //　これでViewのbackgroundという画像の部分と繋がる
-    //MARK: Properties
+    @IBOutlet weak var favoriteButton: UIButton!    //MARK: Properties
     //型推論を使用して変数にインスタンスを代入
     var weatherManager = WeatherDataManager() //インスタンスを作成し、天気データの取得や管理を行います
     let locationManager = CLLocationManager() //インスタンスを作成し、ユーザーの現在位置を取得・管理 import CoreLocationしているからCLLocationManager()が使える
@@ -29,10 +29,31 @@ class WeatherViewController: UIViewController {
         
         locationManager.delegate = self // CLLocationManagerが位置情報のイベントをWeatherViewControllerに通知するよう設定する
         weatherManager.delegate = self // WeatherDataManagerが天気データの更新イベントをWeatherViewControllerに通知するよう設定する
-        searchField.delegate = self // UITextFieldの編集イベントをWeatherViewControllerに通知するよう設定する
+        searchField.delegate = self //UITextFieldの編集イベントをWeatherViewControllerに通知するよう設定する
+        //"suit.heart.fill"をheartImageに格納
+        let heartImage = UIImage(systemName: "suit.heart.fill")
+        //通常の状態の時にfavoriteButtonをheartImageに設定
+        favoriteButton.setImage(heartImage, for: .normal)
+        //ボタンのタイトル（テキスト）を空文字列に設定
+        favoriteButton.setTitle("", for: .normal)
+        //ボタンのサイズを幅、高さを設定
+        favoriteButton.frame.size = CGSize(width: 50, height: 50)
+           }
+        //タンがタップされたら実行
+    @IBAction func favoriteButtonPressed(_ sender: UIButton) {
+        //ThirdViewControllerクラスのインスタンスを作成
+        //bundle: nil にすることで、アプリのメインバンドルから ThirdView.xib ファイルを探して読み込むように設定
+        let thirdViewController = ThirdViewController(nibName: "ThirdView", bundle: nil)
+        //thirdViewControllerにナビゲーションバーをつけて前の画面に戻る機能追加
+        let navigationController = UINavigationController(rootViewController: thirdViewController)
+        //モーダル表示（別の画面を現在の画面の上に重ねて表示する）のスタイルを設定
+        //.fullScreen: 画面遷移がフルスクリーンで行われることを指定
+        navigationController.modalPresentationStyle = .fullScreen
+        //present(_:animated:completion:) メソッド ビューコントローラをモーダルに表示するために使用
+        //completion: nil → 実行した後何もしない　animated: true →スムーズに動く
+        present(navigationController, animated: true, completion: nil)
+        }
     }
-}
- 
 //MARK:- TextField extension
 //WeatherViewControllerがUITextFieldDelegate準拠し、WeatherViewControllerを拡張する
 extension WeatherViewController: UITextFieldDelegate {
