@@ -6,7 +6,6 @@
 //  Copyright © 2024 App Brewery. All rights reserved.
 //
 import UIKit
-import Foundation
 
 class ThirdViewController: UIViewController {
 
@@ -14,13 +13,12 @@ class ThirdViewController: UIViewController {
         super.viewDidLoad()
         // ナビゲーションバーのタイトルを設定
         self.title = "navTest"
-        // ナビゲーションバーの外観をカスタマイズ
+        //UINavigationBarAppearanceクラスの新しいインスタンスを生成
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground() // 不透明な背景を設定
-        //appearance.backgroundColor = UIColor.lightGray // 背景色を薄グレーに設定？
+        //appearance.backgroundColor = UIColor.lightGray // 背景色を薄グレーに設定
         appearance.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-        // カスタム外観を適用
-        navigationController?.navigationBar.standardAppearance = appearance
+        //オプショナルチェイニング navigationBar.scrollEdgeAppearanceにappearanceを格納
+        //navigationBar.scrollEdgeAppearance: ナビゲーションバーのスクロール中やスクロールビューの端に達した時の外観を定義するプロパティ
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         // 左側に「戻る」ボタンを追加
         let backButton = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(backButtonPressed))
