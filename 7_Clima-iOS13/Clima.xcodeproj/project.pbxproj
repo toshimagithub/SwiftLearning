@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0405D0152C97DD4000CEF4B4 /* DadJokeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0405D0142C97DD4000CEF4B4 /* DadJokeDate.swift */; };
+		0405D0172C97DEF700CEF4B4 /* DadJokeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0405D0162C97DEF700CEF4B4 /* DadJokeManager.swift */; };
+		0405D0192C97E9C200CEF4B4 /* DadJokeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0405D0182C97E9C200CEF4B4 /* DadJokeModel.swift */; };
 		040ECA8D2C7E028B00155263 /* ThirdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040ECA8C2C7E028B00155263 /* ThirdView.xib */; };
 		040ECA8F2C7E051100155263 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040ECA8E2C7E051100155263 /* ThirdViewController.swift */; };
 		040FDF432C8468B600D9DA5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040FDF422C8468B600D9DA5F /* Main.storyboard */; };
@@ -24,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0405D0142C97DD4000CEF4B4 /* DadJokeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DadJokeDate.swift; sourceTree = "<group>"; };
+		0405D0162C97DEF700CEF4B4 /* DadJokeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DadJokeManager.swift; sourceTree = "<group>"; };
+		0405D0182C97E9C200CEF4B4 /* DadJokeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DadJokeModel.swift; sourceTree = "<group>"; };
 		040ECA8C2C7E028B00155263 /* ThirdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThirdView.xib; sourceTree = "<group>"; };
 		040ECA8E2C7E051100155263 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		040FDF422C8468B600D9DA5F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../Downloads/Main.storyboard; sourceTree = "<group>"; };
@@ -109,8 +115,11 @@
 			isa = PBXGroup;
 			children = (
 				7D64259524473AE800F1DD90 /* WeatherDataManager.swift */,
+				0405D0162C97DEF700CEF4B4 /* DadJokeManager.swift */,
 				7D6425972451AEA500F1DD90 /* WeatherData.swift */,
 				7DB97A2B24585AB800C3BB03 /* WeatherModel.swift */,
+				0405D0142C97DD4000CEF4B4 /* DadJokeDate.swift */,
+				0405D0182C97E9C200CEF4B4 /* DadJokeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,11 +202,14 @@
 			files = (
 				7D64259624473AE800F1DD90 /* WeatherDataManager.swift in Sources */,
 				7D6425982451AEA500F1DD90 /* WeatherData.swift in Sources */,
+				0405D0192C97E9C200CEF4B4 /* DadJokeModel.swift in Sources */,
+				0405D0152C97DD4000CEF4B4 /* DadJokeDate.swift in Sources */,
 				ADAA27B5231BBFAF00365194 /* WeatherViewController.swift in Sources */,
 				040ECA8F2C7E051100155263 /* ThirdViewController.swift in Sources */,
 				ADAA27B1231BBFAF00365194 /* AppDelegate.swift in Sources */,
 				7DB97A2C24585AB800C3BB03 /* WeatherModel.swift in Sources */,
 				ADAA27B3231BBFAF00365194 /* SceneDelegate.swift in Sources */,
+				0405D0172C97DEF700CEF4B4 /* DadJokeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
