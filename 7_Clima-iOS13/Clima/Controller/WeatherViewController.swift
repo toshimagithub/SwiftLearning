@@ -56,6 +56,13 @@ class WeatherViewController: UIViewController {
         //completion: nil → 実行した後何もしない　animated: true →スムーズに動く
         present(navigationController, animated: true, completion: nil)
         }
+    @IBAction func dadJokeButtonPressed(_ sender: UIButton) {
+          dadJokeManager.fetchDadJoke { [weak self] joke in
+              DispatchQueue.main.async {
+                  self?.dadJokeLabel.text = joke?.formattedJoke // `formattedJoke` を使って整形された親父ギャグを表示
+              }
+          }
+      }
     }
 //MARK:- TextField extension
 //WeatherViewControllerがUITextFieldDelegate準拠し、WeatherViewControllerを拡張する

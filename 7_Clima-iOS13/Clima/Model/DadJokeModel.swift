@@ -15,7 +15,7 @@ struct DadJokeModel {
     
     // このプロパティは、UI で表示する際に必要なフォーマットを提供できます。
     var formattedJoke: String {
-        return "Here's a dad joke for you: \(jokeText)"
+        return jokeText
     }
 }
 
