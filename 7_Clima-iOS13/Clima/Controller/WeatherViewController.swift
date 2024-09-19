@@ -19,9 +19,12 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var searchField: UITextField!   // ユーザーが都市名を入力するためのテキストフィールド
     @IBOutlet weak var background: UIImageView! //　これでViewのbackgroundという画像の部分と繋がる
     @IBOutlet weak var favoriteButton: UIButton!    //MARK: Properties
-    //型推論を使用して変数にインスタンスを代入
+    @IBOutlet weak var dadJokeButton: UIButton!
+    @IBOutlet weak var dadJokeLabel: UILabel!   //型推論を使用して変数にインスタンスを代入
     var weatherManager = WeatherDataManager() //インスタンスを作成し、天気データの取得や管理を行います
     let locationManager = CLLocationManager() //インスタンスを作成し、ユーザーの現在位置を取得・管理 import CoreLocationしているからCLLocationManager()が使える
+    let dadJokeManager = DadJokeManager()
+
     
     //UIViewController クラスの viewDidLoad メソッドをオーバーライドしている
     override func viewDidLoad() {
@@ -53,6 +56,13 @@ class WeatherViewController: UIViewController {
         //completion: nil → 実行した後何もしない　animated: true →スムーズに動く
         present(navigationController, animated: true, completion: nil)
         }
+    @IBAction func dadJokeButtonPressed(_ sender: UIButton) {
+          dadJokeManager.fetchDadJoke { [weak self] joke in
+              DispatchQueue.main.async {
+                  self?.dadJokeLabel.text = joke?.formattedJoke // `formattedJoke` を使って整形された親父ギャグを表示
+              }
+          }
+      }
     }
 //MARK:- TextField extension
 //WeatherViewControllerがUITextFieldDelegate準拠し、WeatherViewControllerを拡張する
